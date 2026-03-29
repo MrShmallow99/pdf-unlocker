@@ -13,15 +13,14 @@
     html, body { height: 100%; background: var(--paper); color: var(--ink); font-family: var(--mono); font-size: 14px; }
     .shell { min-height: 100vh; display: grid; grid-template-rows: auto 1fr auto; max-width: 680px; margin: 0 auto; padding: 0 24px; }
     header { padding: 48px 0 32px; border-bottom: 1.5px solid var(--border); }
-    .header-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 12px 16px; }
-    .header-title-block { min-width: 0; }
-    .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-top: 2px; }
+    .header-title-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; }
+    .logo-line { display: flex; align-items: baseline; gap: 12px; flex: 1 1 auto; min-width: 0; }
+    .header-actions { display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-left: auto; }
     .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--border); border-radius: 4px; background: transparent; color: var(--dim); cursor: pointer; text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s; }
     .icon-btn:hover { background: var(--cream); color: var(--ink); border-color: var(--dim); transform: scale(1.04); }
     .icon-btn:active { transform: scale(1); }
     .icon-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
     .icon-btn svg path { fill: currentColor; }
-    .logo-line { display: flex; align-items: baseline; gap: 12px; }
     .logo-icon { font-size: 28px; line-height: 1; }
     h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 5vw, 36px); letter-spacing: -0.02em; line-height: 1.1; }
     .tagline { margin-top: 8px; color: var(--dim); font-size: 13px; letter-spacing: 0.04em; }
@@ -80,14 +79,10 @@
 <body>
 <div class="shell">
   <header>
-    <div class="header-top">
-      <div class="header-title-block">
-        <div class="logo-line">
-          <span class="logo-icon">🔓</span>
-          <h1>PDF Unlock</h1>
-        </div>
-        <p class="tagline">Remove password protection from PDF files — entirely in your browser.</p>
-        <span class="privacy-badge">100% client-side · no uploads · no server</span>
+    <div class="header-title-row">
+      <div class="logo-line">
+        <span class="logo-icon">🔓</span>
+        <h1>PDF Unlock</h1>
       </div>
       <div class="header-actions" role="toolbar" aria-label="Page actions">
         <button type="button" class="icon-btn" id="btn-share" title="Share" aria-label="Share this page">
@@ -98,6 +93,8 @@
         </a>
       </div>
     </div>
+    <p class="tagline">Remove password protection from PDF files — entirely in your browser.</p>
+    <span class="privacy-badge">100% client-side · no uploads · no server</span>
   </header>
 
   <main>
