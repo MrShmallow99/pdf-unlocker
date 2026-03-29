@@ -66,7 +66,7 @@
     .how-desc { font-size: 11px; color: var(--dim); line-height: 1.5; }
     @media (max-width: 480px) { .how { grid-template-columns: 1fr; } #drop-zone { padding: 32px 20px; } .pw-section, .action-section { padding: 20px; } }
   </style>
-  <script src="https://unpkg.com/@neslinesli93/qpdf-wasm@0.3.0/dist/qpdf.js"></script>
+  <script src="./qpdf.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -137,7 +137,7 @@
 
 <script>
 (function () {
-  const QPDF_CDN_BASE = 'https://unpkg.com/@neslinesli93/qpdf-wasm@0.3.0/dist/';
+  const QPDF_CDN_BASE = './';
   const IN_NAME = 'locked.pdf';
   const OUT_NAME = 'unlocked.pdf';
 
