@@ -5,7 +5,7 @@ A fully client-side web application to remove password protection from PDF files
 ## 🌟 Why this tool?
 Most online PDF unlockers require you to upload your sensitive documents (like bank statements or tax forms) to a remote server. This poses a massive privacy and security risk. 
 
-**Secure PDF Unlocker** processes everything 100% locally in your web browser. Your files and passwords never leave your device.
+**Local PDF Unlocker** processes everything 100% locally in your web browser. Your files and passwords never leave your device.
 
 ## ✨ Features
 * **Zero Uploads:** Complete client-side processing. No servers, no tracking.
