@@ -140,6 +140,7 @@
   const QPDF_CDN_BASE = './';
   const IN_NAME = 'locked.pdf';
   const OUT_NAME = 'unlocked.pdf';
+  const MAX_BYTES = 150 * 1024 * 1024;
 
   const dropZone = document.getElementById('drop-zone');
   const fileInput = document.getElementById('file-input');
@@ -161,7 +162,8 @@
   let lastOutName = 'unlocked.pdf';
 
   function setUnlockEnabled() {
-    btnUnlock.disabled = !wasmReady || !selectedFile;
+    btnUnlock.disabled =
+      !wasmReady || !selectedFile || pwInput.value.trim().length === 0;
   }
 
   function clearStatus() {
@@ -185,6 +187,20 @@
   }
 
   function updateChosenFile(file) {
+    if (file && file.size > MAX_BYTES) {
+      fileInput.value = '';
+      selectedFile = null;
+      fnameText.textContent = '';
+      chosenName.classList.remove('visible');
+      pwSection.classList.remove('visible');
+      pwInput.value = '';
+      pwInput.classList.remove('error');
+      hideDownloadExtras();
+      showStatus('error', 'File is too large. Please select a PDF under 150MB.', false);
+      setUnlockEnabled();
+      return;
+    }
+
     selectedFile = file;
     if (file) {
       fnameText.textContent = file.name;
@@ -236,6 +252,10 @@
   togglePw.addEventListener('click', function () {
     const isPwd = pwInput.getAttribute('type') === 'password';
     pwInput.setAttribute('type', isPwd ? 'text' : 'password');
+  });
+
+  pwInput.addEventListener('input', function () {
+    setUnlockEnabled();
   });
 
   ['dragenter', 'dragover'].forEach(function (ev) {
